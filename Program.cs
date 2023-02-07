@@ -1,9 +1,17 @@
+using projetPII.Models;
+using projetPII.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Attach an EF Core database context to each query
+builder.Services.AddDbContext<projetPIIContext>();
+
 var app = builder.Build();
+
+SeedData.Init();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
