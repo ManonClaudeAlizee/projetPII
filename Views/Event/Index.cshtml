@@ -47,6 +47,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Lieu)
                 </td>
+                <td>
+                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@item.Id">Supprimer un évènement</a>
+                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@item.Id">Modifier un évènement</a>                
+                </td>
             </tr>
         }
     </tbody>

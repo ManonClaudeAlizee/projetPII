@@ -50,4 +50,83 @@ public class EventController : Controller
         //redisplay form if failure
         return View(ev);
     }
+
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var ev = await _context.Events
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (ev == null)
+        {
+            return NotFound();
+        }
+
+        return View(ev);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var ev = await _context.Events.FindAsync(id);
+        _context.Events.Remove(ev!);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+
+    // GET: Movies/Edit/5
+    public async Task<IActionResult> Edit(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var ev = await _context.Events.FindAsync(id);
+        if (ev == null)
+        {
+            return NotFound();
+        }
+        return View(ev);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,Description,Lieu")] Event ev)
+    {
+        if (id != ev.Id)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(ev);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EventExists(ev.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        return View(ev);
+    }
+
+    private bool EventExists(int id)
+    {
+        return _context.Events.Any(e => e.Id == id);
+    }
 }
