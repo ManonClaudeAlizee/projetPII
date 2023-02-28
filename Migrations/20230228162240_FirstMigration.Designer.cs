@@ -11,7 +11,7 @@ using projetPII.Data;
 namespace projetPII.Migrations
 {
     [DbContext(typeof(projetPIIContext))]
-    [Migration("20230228084219_FirstMigration")]
+    [Migration("20230228162240_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -29,7 +29,11 @@ namespace projetPII.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("DescriptionCourte")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DescriptionLongue")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

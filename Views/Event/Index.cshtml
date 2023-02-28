@@ -4,6 +4,87 @@
     ViewData["Title"] = "Evenements";
 }
 
+<h2>Cours hebdomadaire</h2>
+
+<table class="table">
+    <tr>
+    <th>
+    </th>
+    <th>
+        Mardi
+    </th>
+    <th>
+        Mercredi
+    </th>
+    <th>
+        Jeudi
+    </th>
+    <th>
+        Vendredi
+    </th>
+    </tr>
+    <tr>
+    <th>
+        19h  - 20h
+    </th>
+    <td>
+        Salsa <br/>
+        niveau 1 et 2 <br/>
+        Floirac - M270
+    </td>
+    <td>
+        initiation Kizumba <br/>
+        niveau 2 <br/>
+        Mérignac - B11
+    </td>
+    <td>
+        initiation Salsa <br/>
+        niveau 2 <br/>
+        Mérignac - B11
+    </td>
+    <td>
+        initiation Bachata <br/>
+        niveau 2 <br/>
+        Mérignac - B11
+    </td>
+    </td>
+    <tr>
+    <th>
+        20h  - 21h
+    </th>
+    <td>
+        Bachata <br/>
+        niveau 1 et 2 <br/>
+        Floirac - M270
+    </td>
+    <td>
+        initiation Kizumba <br/>
+        niveau 1 <br/>
+        Mérignac - B11
+    </td>
+    <td>
+        initiation Salsa <br/>
+        niveau 1 <br/>
+        Mérignac - B11
+    </td>
+    <td>
+        initiation Bachata <br/>
+        niveau 1 <br/>
+        Mérignac - B11
+    </td>
+    </tr>
+    <tr>
+    <th>
+        21h  - 22h
+    </th>
+    <td>
+        Kizumba <br/>
+        niveau 1 et 2 <br/>
+        Floirac - M270
+
+    </tr>
+</table>
+
 <h2>Evenements</h2>
 
 <a asp-controller="Event" asp-action="Create">Ajouter un évènement</a>
@@ -21,7 +102,7 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.DescriptionCourte)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Lieu)
@@ -42,7 +123,7 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.DescriptionCourte)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Lieu)

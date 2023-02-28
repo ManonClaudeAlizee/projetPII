@@ -40,7 +40,8 @@ public class SeedData
             {
                 Title = "soirée SBK",
                 Date = new DateTime(2023, 12, 1),
-                Description = "Super soirée danses latines sur Bordeaux",
+                DescriptionCourte = "Super soirée danses latines sur Bordeaux",
+                DescriptionLongue = "Super soirée danses latines sur Bordeaux",
                 Lieu = "L'atelier - Merignac",
             };
 
@@ -48,7 +49,8 @@ public class SeedData
             {
                 Title = "soirée SBK bis",
                 Date = new DateTime(2023, 12, 8),
-                Description = "Super soirée danses latines sur Bordeaux",
+                DescriptionCourte = "Super soirée danses latines sur Bordeaux",
+                DescriptionLongue = "Super soirée danses latines sur Bordeaux",
                 Lieu = "L'atelier - Merignac",
             };
             context.Events.AddRange(eventTest, eventTest2);

@@ -36,7 +36,7 @@ public class EventController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Title,Date,Description,Lieu")] Event ev)
+    public async Task<IActionResult> Create([Bind("Id,Title,Date,DescriptionCourte,DescriptionLongue,Lieu")] Event ev)
     {
         //validation rules
         if (ModelState.IsValid)
@@ -95,7 +95,7 @@ public class EventController : Controller
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,Description,Lieu")] Event ev)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,DescriptionCourte,DescriptionLongue,Lieu")] Event ev)
     {
         if (id != ev.Id)
         {

@@ -19,7 +19,8 @@ namespace projetPII.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    DescriptionCourte = table.Column<string>(type: "TEXT", nullable: false),
+                    DescriptionLongue = table.Column<string>(type: "TEXT", nullable: false),
                     Lieu = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

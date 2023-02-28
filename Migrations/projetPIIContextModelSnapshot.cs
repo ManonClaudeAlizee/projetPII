@@ -26,7 +26,11 @@ namespace projetPII.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("DescriptionCourte")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DescriptionLongue")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
