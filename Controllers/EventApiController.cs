@@ -7,85 +7,85 @@ namespace projetPII.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserApiController : ControllerBase
+public class EventApiController : ControllerBase
 {
     private readonly projetPIIContext _context;
 
-    public UserApiController(projetPIIContext context)
+    public EventApiController(projetPIIContext context)
     {
         _context = context;
     }
 
-    // GET: api/UserApi
-    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    // GET: api/EventApi
+    public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
     {
-        // Get users
-        var users = _context.Users;
+        // Get events
+        var events = _context.Events;
         // .OrderBy(s => s.LastName)
         // .ThenBy(s => s.FirstName);
 
-        return await users.ToListAsync();
+        return await events.ToListAsync();
     }
 
     // GET: api/UserApi/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<User>> GetUser(int id)
+    public async Task<ActionResult<Event>> GetEvent(int id)
     {
         // Find student and related enrollments
         // SingleAsync() throws an exception if no student is found (which is possible, depending on id)
         // SingleOrDefaultAsync() is a safer choice here
-        var user = await _context.Users.FindAsync(id);
+        var ev = await _context.Events.FindAsync(id);
         // .Where(s => s.Id == id)
         // .Include(s => s.Enrollments)
         //.SingleOrDefaultAsync();
 
-        if (user == null)
+        if (ev == null)
             return NotFound();
 
-        return user;
+        return ev;
     }
 
-    // POST: api/UserApi
+    // POST: api/EventApi
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<User>> PostUser(User user)
+    public async Task<ActionResult<Event>> PostEvent(Event ev)
     {
-        _context.Users.Add(user);
+        _context.Events.Add(ev);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+        return CreatedAtAction(nameof(GetEvent), new { id = ev.Id }, ev);
     }
 
-    // DELETE: api/UserApi/5
+    // DELETE: api/EventApi/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
+    public async Task<IActionResult> DeleteEvent(int id)
     {
-        var user = await _context.Users.FindAsync(id);
-        if (user == null)
+        var ev = await _context.Events.FindAsync(id);
+        if (ev == null)
             return NotFound();
 
-        _context.Users.Remove(user);
+        _context.Events.Remove(ev);
         await _context.SaveChangesAsync();
 
         return NoContent();
     }
 
-    // PUT: api/UserApi/5
+    // PUT: api/EventApi/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutUser(int id, User user)
+    public async Task<IActionResult> PutEvent(int id, Event ev)
     {
-        if (id != user.Id)
+        if (id != ev.Id)
             return BadRequest();
 
-        _context.Entry(user).State = EntityState.Modified;
+        _context.Entry(ev).State = EntityState.Modified;
         try
         {
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!UserExists(id))
+            if (!EventExists(id))
                 return NotFound();
             else
                 throw;
@@ -93,9 +93,10 @@ public class UserApiController : ControllerBase
         return NoContent();
     }
 
-    // Returns true if a user with specified id already exists
-    private bool UserExists(int id)
+    // Returns true if an event with specified id already exists
+    private bool EventExists(int id)
     {
-        return _context.Users.Any(user => user.Id == id);
+        return _context.Events.Any(e => e.Id == id);
     }
+
 }

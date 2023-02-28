@@ -6,6 +6,7 @@ namespace projetPII.Data;
 public class projetPIIContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Event> Events { get; set; } = null!;
 
     public string DbPath { get; private set; }
 

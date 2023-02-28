@@ -24,7 +24,34 @@ public class SeedData
                 IsAdmin = true,
             };
 
-            context.Users.AddRange(user1);
+            User user2 = new User
+            {
+                Name = "Marie",
+                FirstName = "Pierre",
+                Phone = "0631000018",
+                Mail = "blibli@gmail.com",
+                Password = "mdp",
+                IsAdmin = false,
+            };
+
+            context.Users.AddRange(user1, user2);
+
+            Event eventTest = new Event
+            {
+                Title = "soirée SBK",
+                Date = new DateTime(2023, 12, 1),
+                Description = "Super soirée danses latines sur Bordeaux",
+                Lieu = "L'atelier - Merignac",
+            };
+
+            Event eventTest2 = new Event
+            {
+                Title = "soirée SBK bis",
+                Date = new DateTime(2023, 12, 8),
+                Description = "Super soirée danses latines sur Bordeaux",
+                Lieu = "L'atelier - Merignac",
+            };
+            context.Events.AddRange(eventTest, eventTest2);
 
             // Commit changes into DB
             context.SaveChanges();

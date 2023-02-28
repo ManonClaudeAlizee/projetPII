@@ -4,3 +4,12 @@
     ViewData["Title"] = "Connexion";
     User user = (User)ViewData["User"]!;
 }
+
+@if (Model.IsConnected)
+{
+    <p>Connecté</p>
+}
+else
+{
+    <p>Pas connecté</p>
+}
